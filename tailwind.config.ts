@@ -23,6 +23,12 @@ const config: Config = {
 			},
 			colors: {
 				orange: '#DAAC79',
+				red: {
+					primary: '#E50914',
+					100: '#EB3942',
+					200: '#C11119',
+					300: '#f50723',
+				},
 			},
 			animation: {
 				'spin-slow': 'spin 10s linear infinite',

@@ -9,6 +9,7 @@ const StorageProvider = (props: any) => {
 
 	//api call
 	const [setting, setSetting] = useState();
+	const [listGenres, setListGenres] = useState([]);
 
 	return (
 		<StorageContext.Provider
@@ -18,6 +19,8 @@ const StorageProvider = (props: any) => {
 				//api call
 				setting,
 				setSetting,
+				listGenres,
+				setListGenres,
 			}}
 			{...props}
 		></StorageContext.Provider>

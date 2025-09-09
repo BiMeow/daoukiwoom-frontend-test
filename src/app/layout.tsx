@@ -8,19 +8,18 @@ import 'keen-slider/keen-slider.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import './globals.scss';
 import { headers } from 'next/headers';
 
-export async function generateMetadata({ params, searchParams }: any, parent: any) {
+export async function generateMetadata({ params, searchParams }: any) {
 	// read route params
 	const locale = params.locale;
 	const headersList = headers();
 	const host = headersList.get('host');
 	const protocol = headersList.get('x-forwarded-proto') || 'https';
 	const fullUrl = `${protocol}://${host}${headersList.get('x-next-url') || ''}`;
-
-	console.log('BiMeow log fullUrl', fullUrl);
 
 	let title: any = 'Daoukiwoom Frontend Test';
 	let desc: any = 'BiMeow is me!!!';

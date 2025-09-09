@@ -4,7 +4,7 @@
 const nextConfig = {
 	/* config options here */
 	images: {
-		domains: ['d2qruergf1mdkb.cloudfront.net'],
+		domains: ['image.tmdb.org'],
 	},
 };
 

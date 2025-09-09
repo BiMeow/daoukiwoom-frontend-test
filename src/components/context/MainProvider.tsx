@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import React, { useContext, useEffect, useRef } from 'react';
 import { useIsMounted, useWindowSize } from 'usehooks-ts';
 import { ReactLenis } from '@studio-freight/react-lenis';
+import fetchClient from '@/lib/fetch/fetchClient';
 
 notification.config({
 	duration: 2,
@@ -24,7 +25,7 @@ const MainProvider: React.FC<any> = ({ children, isPrivate }) => {
 	const pathName = usePathname();
 	const { width } = useWindowSize();
 
-	const { setSetting, setIsLoading } = useStorage();
+	const { setSetting, setIsLoading, setListGenres } = useStorage();
 
 	const initAnimation = () => {
 		let listFadeInScroll = gsap.utils.toArray('.fadeInScroll');
@@ -201,22 +202,22 @@ const MainProvider: React.FC<any> = ({ children, isPrivate }) => {
 		ScrollTrigger.refresh();
 	};
 
-	const getSetting = async () => {
+	const getGenres = async () => {
 		try {
-			const Apicall: any = await axios.get(getApiBaseUrl(`/api/get-setting/`));
-			const res: any = Apicall.data;
-			if (res.success) {
-				setSetting(res.data);
+			const res: any = await fetchClient({ path: 'https://api.themoviedb.org/3/genre/movie/list' });
+
+			if (res.genres) {
+				setListGenres(res.genres);
 			}
 		} catch (error) {
 			// notification.warning({ message: 'Somthing wrong!' });
-			console.log('BiMeow log get setting fail');
+			console.log('BiMeow log get genres fail');
 		}
 	};
 
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
-		// getSetting();
+		getGenres();
 
 		function update(time: any) {
 			lenisRef.current?.lenis?.raf(time * 1000);
