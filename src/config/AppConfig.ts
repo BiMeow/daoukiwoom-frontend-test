@@ -9,13 +9,13 @@ const AppConfig = {
 	},
 	locale: 'vi',
 	icons: {
-		favicon: `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}/images/favicon.png`,
-		icon: `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}/images/favicon.png`,
-		shortcut: `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}/images/favicon.png`,
-		apple: `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}/images/favicon.png`,
+		favicon: `/images/favicon.png`,
+		icon: `/images/favicon.png`,
+		shortcut: `/images/favicon.png`,
+		apple: `/images/favicon.png`,
 		other: {
 			rel: 'favicon.png',
-			url: `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}/images/favicon.png`,
+			url: `/images/favicon.png`,
 		},
 	},
 };
