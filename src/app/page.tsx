@@ -1,4 +1,5 @@
 import PageHome from '@/components/router/PageHome';
+import fetchClient from '@/lib/fetch/fetchClient';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export const metadata = async () => {
@@ -14,5 +15,8 @@ export const metadata = async () => {
 export default async function Home() {
 	noStore();
 
-	return <PageHome />;
+	const popularMovies: any = await fetchClient({ path: 'https://api.themoviedb.org/3/movie/popular' });
+	const topRatedMovies: any = await fetchClient({ path: 'https://api.themoviedb.org/3/movie/top_rated' });
+
+	return <PageHome popularMovies={popularMovies.results} topRatedMovies={topRatedMovies.results} />;
 }

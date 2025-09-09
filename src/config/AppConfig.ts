@@ -7,9 +7,6 @@ const AppConfig = {
 		}
 		return process.env.APP_URL ? `${process.env.APP_URL}${url}` : `https://www.immi-go.com${url}`;
 	},
-	getBaseAssetUrl: (path = '') => {
-		return `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}${path}?v=${process.env.PUBLIC_ASSET_VERSION || ''}`;
-	},
 	locale: 'vi',
 	icons: {
 		favicon: `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}/images/favicon.png`,
@@ -24,6 +21,11 @@ const AppConfig = {
 };
 
 export default AppConfig;
+
 export const getApiBaseUrl = (path = '') => {
 	return `${process.env.NEXT_PUBLIC_BASE_API_URL || ''}${path}`;
+};
+
+export const getBaseAssetUrl = (path = '') => {
+	return `${process.env.NEXT_PUBLIC_BASE_ASSET_URL || ''}${path}?v=${process.env.PUBLIC_ASSET_VERSION || ''}`;
 };
