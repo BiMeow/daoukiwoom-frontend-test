@@ -63,7 +63,7 @@ function CardMovie({ data, ranking = false, rank = 0, ...props }: CardMovieProps
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>
-				<Link href={`/movie/${data?.id}`} className="absFull" />
+				<Link href={`/movie/${data?.id}`} className="absFull z-20" />
 				{rank && ranking && (
 					<p
 						className={`

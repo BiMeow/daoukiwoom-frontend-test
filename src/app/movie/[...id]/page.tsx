@@ -1,5 +1,4 @@
 import PageMovie from '@/components/router/PageMovie';
-import { MovieDetailType } from '@/type/MovieType';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export const metadata = async () => {
@@ -15,15 +14,21 @@ export const metadata = async () => {
 export default async function Home({ params }: any) {
 	noStore();
 
-	const res = await fetch(`https://api.themoviedb.org/3/movie/755898`, {
+	const resDetail = await fetch(`https://api.themoviedb.org/3/movie/${params?.id[0]}`, {
 		headers: {
 			Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
 		},
 		next: { revalidate: 3000 }, // Enable ISR (revalidate every 3000s)
 	});
-	const movieDetail: MovieDetailType = await res.json();
+	const movieDetail = await resDetail.json();
 
-	console.log('BiMeow log movieDetail', params?.id[0], movieDetail);
+	const resRelated = await fetch(`https://api.themoviedb.org/3/movie/${params?.id[0]}/recommendations`, {
+		headers: {
+			Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+		},
+		next: { revalidate: 3000 }, // Enable ISR (revalidate every 3000s)
+	});
+	const relatedMovies = await resRelated.json();
 
-	return <PageMovie movieDetail={movieDetail} />;
+	return <PageMovie movieDetail={movieDetail} relatedMovies={relatedMovies.results} />;
 }
