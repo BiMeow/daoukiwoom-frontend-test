@@ -12,7 +12,7 @@ type SectionHomeBannerProps = {
 function SectionHomeBanner({ data, ...props }: SectionHomeBannerProps) {
 	return (
 		<>
-			<div className={`SectionHomeBanner relative h-[56.25vw]`}>
+			<div className={`SectionHomeBanner relative h-[56.25vw] mb:h-dvh`}>
 				<div className="cover size-full">
 					<Image
 						src={getBaseAssetUrl(data?.backdrop_path ?? '')}
@@ -24,7 +24,7 @@ function SectionHomeBanner({ data, ...props }: SectionHomeBannerProps) {
 					/>
 				</div>
 
-				<div className="content absolute bottom-[35%] left-[4%] z-20 w-[36%] space-y-[20px]">
+				<div className="content absolute bottom-[35%] left-[4%] z-20 w-[36%] space-y-[20px] mb:w-[75%] mb:bottom-[25%]">
 					{/* <Image
 						src="/images/home/banner-title.png"
 						alt="Netflix Banner Title"
@@ -33,8 +33,8 @@ function SectionHomeBanner({ data, ...props }: SectionHomeBannerProps) {
 						height={0}
 						sizes="100vw"
 					/> */}
-					<h1 className="text-[4vw] font-bold">{data?.title}</h1>
-					<p className="text-[1.2vw]">{data?.overview}</p>
+					<h1 className="text-[4vw] font-bold tl-p:text-[30px]">{data?.title}</h1>
+					<p className="text-[1.2vw] tl-p:text-[16px] line-clamp-4">{data?.overview}</p>
 					<div className="listBtn flex gap-[10px]">
 						<div className="mainBtn flex items-center gap-[12px]">
 							<IconPlay className="text-[21px]" />

@@ -2,6 +2,7 @@ import { IconNotification, IconSearch, IconSmallArrow } from '@/components/commo
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { memo, useEffect, useState } from 'react';
 
@@ -41,34 +42,57 @@ function Header({ ...props }) {
 		<>
 			<header
 				className={`
-					Header cusContainer fixed top-0 z-50 w-full duration-500
+					Header fixed top-0 z-50 w-full duration-500
 					${scrolled ? 'bg-black/90 shadow-lg backdrop-blur-md' : 'bg-transparent'}
 				`}
 			>
-				<div className="cusContainer relative flex items-center gap-[45px] py-[18px]">
-					<Image
-						src="/images/logo.png"
-						alt="Netflix Logo"
-						className={`w-[100px]`}
-						width={0}
-						height={0}
-						sizes="100vw"
-					/>
-					<div className="menu flex gap-[20px]">
+				<div className="cusContainer flex items-center gap-[45px] py-[18px]">
+					<Link href={'/'} className="relative z-10">
+						<Image
+							src="/images/logo.png"
+							alt="Netflix Logo"
+							className={`w-[100px]`}
+							width={0}
+							height={0}
+							sizes="100vw"
+						/>
+					</Link>
+					<div
+						className={`
+						menu flex gap-[20px] 
+						tl-p:absolute tl-p:left-0 tl-p:top-0 tl-p:h-screen tl-p:w-screen tl-p:flex-col tl-p:bg-black tl-p:py-[75px] tl-p:duration-300
+						${showNav ? 'tl-p:translate-y-0 tl-p:opacity-100' : 'tl-p:opacity-0 tl-p:-translate-y-full'}
+						`}
+					>
 						{menus.map((menu: any, index: number) => (
 							<a
 								key={menu.id}
 								href={menu.path}
 								className={`
-							text-[14px] text-[#E5E5E5] duration-300
-							${(pathname == '/' && index == 0) || pathname.includes(menu.path.slice(1) || 'null') ? 'cursor-not-allowed font-medium text-white' : 'hover:opacity-75'}
+								text-[14px] text-[#E5E5E5] duration-300 tl-p:text-center
+								${(pathname == '/' && index == 0) || pathname.includes(menu.path.slice(1) || 'null') ? 'cursor-not-allowed font-medium text-white' : 'hover:opacity-75'}
 							`}
 							>
 								{menu.title}
 							</a>
 						))}
+						<div className="tools mx-auto hidden items-center gap-[20px] tl-p:flex">
+							<IconSearch className="cusIcon text-[21px]" />
+							<IconNotification className="cusIcon text-[21px]" />
+							<div className="avatar group flex cursor-pointer items-center gap-[10px]">
+								<Image
+									src="/images/avatar.jpg"
+									alt="Netflix Logo"
+									className={`aspect-1 w-[32px] rounded-sm object-cover`}
+									width={0}
+									height={0}
+									sizes="100vw"
+								/>
+								<IconSmallArrow className="cusIcon text-[10px] group-hover:text-red-primary" />
+							</div>
+						</div>
 					</div>
-					<div className="tools ml-auto flex items-center gap-[20px]">
+					<div className="tools ml-auto flex items-center gap-[20px] tl-p:hidden">
 						<IconSearch className="cusIcon text-[21px]" />
 						<IconNotification className="cusIcon text-[21px]" />
 						<div className="avatar group flex cursor-pointer items-center gap-[10px]">

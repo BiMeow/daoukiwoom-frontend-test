@@ -7,17 +7,23 @@ import { memo } from 'react';
 type PageHomeProps = {
 	popularMovies?: MovieType[];
 	topRatedMovies?: MovieType[];
+	upcomingMovies?: MovieType[];
 };
 
-function PageHome({ popularMovies, topRatedMovies, ...props }: PageHomeProps) {
+function PageHome({ popularMovies, topRatedMovies, upcomingMovies, ...props }: PageHomeProps) {
 	return (
 		<>
 			<div className={`PageHome mainPage`}>
 				{popularMovies && <SectionHomeBanner data={popularMovies[0]} />}
 
 				<div className="mt-[-100px]">
-					{popularMovies && <ListMovies zIndex={10} title="Popular Movies" data={popularMovies} />}
-					{topRatedMovies && <ListMovies zIndex={9} title="Top Rated Movies" data={topRatedMovies} />}
+					{!!topRatedMovies?.length && (
+						<ListMovies zIndex={10} title="Top Rated Movies" data={topRatedMovies} ranking />
+					)}
+					{!!popularMovies?.length && <ListMovies zIndex={9} title="Popular Movies" data={popularMovies} />}
+					{!!upcomingMovies?.length && (
+						<ListMovies zIndex={8} title="Upcoming Movies" data={upcomingMovies} />
+					)}
 				</div>
 			</div>
 		</>
