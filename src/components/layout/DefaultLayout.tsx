@@ -12,7 +12,7 @@ export default function DefaultLayout({ children, locale }: { children?: React.R
 
 			<div className="mainPage relative tl-p:w-screen tl-p:overflow-hidden">
 				<Header />
-				<main className="pageContent min-h-[calc(100dvh-79px)] w-full">{children}</main>
+				<main className="pageContent min-h-[calc(100vh-79px)] w-full">{children}</main>
 				<Footer />
 			</div>
 		</>

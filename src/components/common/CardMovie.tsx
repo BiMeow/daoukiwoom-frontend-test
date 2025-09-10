@@ -67,8 +67,8 @@ function CardMovie({ data, ranking = false, rank = 0, ...props }: CardMovieProps
 				{rank && ranking && (
 					<p
 						className={`
-						rank textStroke absolute left-0 top-1/2 w-[55%] -translate-y-1/2 font-bold leading-[1] tracking-[-20px] text-black
-						${rank >= 10 ? 'text-left text-[10vw]' : 'text-right text-[12vw]'}
+						rank textStroke absolute left-0 top-1/2 w-[55%] -translate-y-1/2 font-bold leading-[1] tracking-[-20px] text-black tl-p:tracking-[-10px]
+						${rank >= 10 ? 'text-left text-[10vw] tl-p:text-[110px] mb:text-[70px]' : 'text-right text-[12vw] tl-p:text-[140px] mb:text-center mb:text-[90px]'}
 						`}
 					>
 						{rank}
@@ -86,7 +86,7 @@ function CardMovie({ data, ranking = false, rank = 0, ...props }: CardMovieProps
 					sizes="100vw"
 				/>
 				<AnimatePresence>
-					{showExtended && <ExtendedCard data={data} positionExtended={positionExtended} />}
+					{showExtended && width > 1000 && <ExtendedCard data={data} positionExtended={positionExtended} />}
 				</AnimatePresence>
 			</div>
 		</>

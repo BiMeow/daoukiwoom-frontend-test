@@ -81,7 +81,7 @@ function ListMovies({
 
 					<button
 						className={`
-							prev flexCenter group absolute right-full top-1/2 z-10 h-full w-[4vw] -translate-y-1/2 bg-[#0007]
+							prev flexCenter group absolute right-full top-1/2 z-10 h-full w-[4vw] -translate-y-1/2 bg-[#0007] tl-p:hidden
 							${isBeginning ? 'swiper-button-disabled' : ''}
 						`}
 						onClick={handlePrev}
@@ -90,7 +90,7 @@ function ListMovies({
 					</button>
 					<button
 						className={`
-							next flexCenter group absolute left-full top-1/2 z-10 h-full w-[4vw] -translate-y-1/2 bg-[#0007]
+							next flexCenter group absolute left-full top-1/2 z-10 h-full w-[4vw] -translate-y-1/2 bg-[#0007] tl-p:hidden
 							${isEnd ? 'swiper-button-disabled' : ''}
 						`}
 						onClick={handleNext}
