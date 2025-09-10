@@ -82,11 +82,11 @@ body,
 	}
 
 	.mainBtn {
-		@apply relative cursor-pointer rounded-[4px] bg-white px-[26px] py-[9px] text-center text-[20px] font-medium text-black duration-500 hover:opacity-75;
+		@apply relative cursor-pointer rounded-[4px] bg-white px-[26px] py-[9px] text-center text-[20px] font-medium text-black duration-500 hover:opacity-75 mb:px-[15px];
 	}
 
 	.secBtn {
-		@apply relative cursor-pointer rounded-[4px] bg-[rgba(109,109,110,0.7)] px-[26px] py-[9px] text-center text-[20px] font-medium text-white duration-500 hover:opacity-75;
+		@apply relative cursor-pointer rounded-[4px] bg-[rgba(109,109,110,0.7)] px-[26px] py-[9px] text-center text-[20px] font-medium text-white duration-500 hover:opacity-75 mb:px-[15px];
 	}
 
 	.cusInput {

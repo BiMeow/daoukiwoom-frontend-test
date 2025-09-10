@@ -36,7 +36,7 @@ function Preloader({ ...props }) {
 			<div className={`Preloader`}>
 				<div
 					className={`
-                    fixed inset-0 z-[9999] flex size-full h-[100dvh] w-screen origin-top items-center justify-center overflow-hidden 
+                    fixed inset-0 z-[9999] flex size-full h-screen w-screen origin-top items-center justify-center overflow-hidden 
                     ${isLoading ? '' : 'scale-y-0 rounded-b-full opacity-0 duration-500'}
                     `}
 				>

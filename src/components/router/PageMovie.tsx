@@ -28,7 +28,7 @@ function PageMovie({ movieDetail, relatedMovies, ...props }: PageMovieProps) {
 	return (
 		<>
 			<div className={`PageMovie mainPage`}>
-				<div className={`banner relative h-dvh mb-[20px]`}>
+				<div className={`banner relative mb-[20px] h-screen`}>
 					<ReactPlayer
 						className="absolute z-0 !h-full !w-full"
 						playing={play}
