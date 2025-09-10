@@ -33,7 +33,7 @@ function ExtentedCard({ data, positionExtended = 'center', ...props }: ExtendedC
 			>
 				<motion.div
 					className={`
-					ExtentedCard w-[20vw] cursor-pointer rounded-[4px] bg-[#111] shadow-lg
+					ExtentedCard w-[20vw] min-w-[200px] cursor-pointer rounded-[4px] bg-[#111] shadow-lg
 					${positionExtended === 'center' && 'origin-top'}
 					${positionExtended === 'left' && 'origin-top-left'}
 					${positionExtended === 'right' && 'origin-top-right'}
@@ -54,11 +54,11 @@ function ExtentedCard({ data, positionExtended = 'center', ...props }: ExtendedC
 						/>
 					</Link>
 
-					<div className="content space-y-[20px] p-[20px]">
+					<div className="content space-y-[20px] p-[20px] tl-p:p-[10px] tl-p:space-y-[10px]">
 						<Link href={`/movie/${data?.id}`}>
-							<h3 className="text-[20px]">{data?.title}</h3>
+							<h3 className="text-[20px] tl-p:text-[16px]">{data?.title}</h3>
 						</Link>
-						<div className="listBtn flex items-center gap-[15px] text-[40px] text-[#fff4]">
+						<div className="listBtn flex items-center gap-[15px] text-[40px] text-[#fff4] tl-p:text-[20px]">
 							<Link href={`/movie/${data?.id}`}>
 								<IconPlayCircle className="duration-300 hover:opacity-75" />
 							</Link>
@@ -68,16 +68,17 @@ function ExtentedCard({ data, positionExtended = 'center', ...props }: ExtendedC
 								<IconMinimalArrowCircle className="duration-300 hover:text-white" />
 							</Link>
 						</div>
-						<div className="info flex items-center gap-[15px] text-[#fff4]">
+						<div className="info flex items-center gap-[15px] text-[#fff4] tl-p:text-[10px]">
 							<p className="age border border-[#fff4] p-[5px]">T18</p>
 							<p>{data?.popularity}</p>
 							<p>{data?.vote_count}</p>
 						</div>
-						<div className="genres flex items-center gap-[5px]">
+						<div className="genres flex flex-wrap items-center gap-[5px] tl-p:text-[10px]">
 							{data?.genre_ids?.map((genre, index) => (
 								<p key={index} className="text-[#fff4]">
 									{listGenres?.find((e: any) => e.id == genre)?.name}{' '}
-									{index < data?.genre_ids?.length - 1 && <span className="mx-[5px]">•</span>}
+
+									{index < data?.genre_ids?.length - 1 && <span className="mx-[5px] tl-p:hidden">•</span>}
 								</p>
 							))}
 						</div>

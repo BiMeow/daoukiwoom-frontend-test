@@ -115,7 +115,11 @@ body,
 }
 
 .textShadow {
-	text-shadow: 2px 2px 2px #00000059;
+	text-shadow: 2px 2px 2px #fff;
+}
+
+.textStroke {
+	-webkit-text-stroke: 4px #666;
 }
 
 .cusPagin {

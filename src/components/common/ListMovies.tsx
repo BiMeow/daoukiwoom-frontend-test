@@ -10,9 +10,17 @@ type ListMoviesProps = {
 	title?: string;
 	className?: string;
 	zIndex?: number;
+	ranking?: boolean;
 };
 
-function ListMovies({ data, title = 'Matched to You', className, zIndex = 1, ...props }: ListMoviesProps) {
+function ListMovies({
+	data,
+	title = 'Matched to You',
+	className,
+	zIndex = 1,
+	ranking = false,
+	...props
+}: ListMoviesProps) {
 	const sliderRef = useRef<any>(null);
 
 	const [isBeginning, setIsBeginning] = useState<boolean>(true);
@@ -28,8 +36,6 @@ function ListMovies({ data, title = 'Matched to You', className, zIndex = 1, ...
 		sliderRef.current.swiper.slideNext();
 	}, []);
 
-	console.log('BiMeow log sliderRef.current.swiper', sliderRef?.current?.swiper);
-
 	return (
 		<>
 			<div className={`ListMovies secSpacing cusContainer relative ${className}`} style={{ zIndex: zIndex }}>
@@ -38,9 +44,9 @@ function ListMovies({ data, title = 'Matched to You', className, zIndex = 1, ...
 				<div className="relative">
 					<Swiper
 						ref={sliderRef}
-						slidesPerView={6}
+						slidesPerView={3}
+						slidesPerGroup={3}
 						spaceBetween={6}
-						slidesPerGroup={6}
 						pagination={{
 							clickable: true,
 						}}
@@ -54,10 +60,21 @@ function ListMovies({ data, title = 'Matched to You', className, zIndex = 1, ...
 							setIsBeginning(swiper.isBeginning);
 							setIsEnd(swiper.isEnd);
 						}}
+						breakpoints={{
+							768: {
+								slidesPerView: 4,
+								slidesPerGroup: 4,
+							},
+
+							1440: {
+								slidesPerView: 6,
+								slidesPerGroup: 6,
+							},
+						}}
 					>
-						{data.map((movie, index) => (
+						{data?.map((movie, index) => (
 							<SwiperSlide key={index}>
-								<CardMovie data={movie} />
+								<CardMovie data={movie} ranking={ranking} rank={index + 1} />
 							</SwiperSlide>
 						))}
 					</Swiper>

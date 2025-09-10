@@ -61,7 +61,7 @@ function Footer({ ...props }) {
 						<IconYoutube />
 					</Link>
 				</div>
-				<div className="grid grid-cols-4">
+				<div className="grid grid-cols-4 mb:grid-cols-2">
 					{menu?.map((col: any, index: number) => (
 						<div className="col space-y-[10px]" key={index}>
 							{col.map((item: any, index2: number) => (

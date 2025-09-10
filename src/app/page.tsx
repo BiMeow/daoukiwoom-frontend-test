@@ -17,6 +17,13 @@ export default async function Home() {
 
 	const popularMovies: any = await fetchClient({ path: 'https://api.themoviedb.org/3/movie/popular' });
 	const topRatedMovies: any = await fetchClient({ path: 'https://api.themoviedb.org/3/movie/top_rated' });
+	const upcomingMovies: any = await fetchClient({ path: 'https://api.themoviedb.org/3/movie/upcoming' });
 
-	return <PageHome popularMovies={popularMovies.results} topRatedMovies={topRatedMovies.results} />;
+	return (
+		<PageHome
+			popularMovies={popularMovies.results}
+			topRatedMovies={topRatedMovies.results}
+			upcomingMovies={upcomingMovies.results}
+		/>
+	);
 }
